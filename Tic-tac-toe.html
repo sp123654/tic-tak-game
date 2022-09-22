@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-eqiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viwport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-tac-toe</title>
+    <link rel="stylesheet" href="tic-tac-toe.css">
+</head>
+<style>
+button{
+    height: 100px;
+    width: 100px;
+    font-size: xx-large;
+    background-color: deeppink;
+}
+div{
+    height: 600px;
+    width: 1000px;
+    padding: 5px;
+    margin-left: 10%;
+    border-radius: 2%;
+    background-color: chartreuse;
+} 
+table{
+    margin-top: 0%;
+    height: 440px;
+    width: 310px;
+    background-color: blue;
+    padding: 5%;
+    border-radius: 20%;
+}
+</style>
+<body bgcolor="yellow">
+    <div>
+        <center><h1>welcome to my Game</h1></center>
+<script type="text/javascript">
+       var flag =true;
+window.addEventListener('load',init);
+
+function init(){
+    document.getElementById('one').addEventListener('click',doXorZero);
+    document.getElementById('two').addEventListener('click',doXorZero);
+    document.getElementById('three').addEventListener('click',doXorZero);
+    document.getElementById('four').addEventListener('click',doXorZero);
+    document.getElementById('five').addEventListener('click',doXorZero);
+    document.getElementById('six').addEventListener('click',doXorZero);
+    document.getElementById('seven').addEventListener('click',doXorZero);
+    document.getElementById('eight').addEventListener('click',doXorZero);
+    document.getElementById('nine').addEventListener('click',doXorZero);
+
+    let x = Math.floor((Math.random() * 100) + 1);
+    console.log('number is : ',x)
+    if(x%2==0){
+        flag =true;
+    }else{
+        flag = false;
+    }
+}
+
+function doXorZero(){
+    if(this.innerText==''){
+        if(flag==true){
+            this.innerText='X';
+        }else{
+            this.innerText='0';
+        }
+        checkWinOrLoose();
+        flag = !flag;
+    }
+}
+
+function checkWinOrLoose(){
+    winOrLoose('one','two','three');
+    winOrLoose('four','five','six');
+    winOrLoose('seven','eight','nine');
+    winOrLoose('one','four','seven');
+    winOrLoose('two','five','eight');
+    winOrLoose('three','sex','nine');
+    winOrLoose('one','five','nine');
+    winOrLoose('three','five','seven');
+}
+
+function winOrLoose(first,second,third){
+    //123,456,789,147,258,369,159,357
+    console.log('check');
+    if(document.getElementById(first).innerText!= ''
+    && document.getElementById(second).innerText!= '' 
+    && document.getElementById(third).innerText !=''){
+
+        if(document.getElementById(first).innerText==document.getElementById(second).innerText 
+        && document.getElementById(first).innerText==document.getElementById(third).innerText){
+            setTimeout(function(){
+                alert("Game Over "+document.getElementById(first).innerText+' is Winner');
+                clearAll();
+            },50); 
+        }
+    }
+}
+
+function clearAll(){
+    document.getElementById('one').innerText = '';
+    document.getElementById('two').innerText = '';
+    document.getElementById('three').innerText = '';
+    document.getElementById('four').innerText = '';
+    document.getElementById('five').innerText = '';
+    document.getElementById('six').innerText = '';
+    document.getElementById('seven').innerText = '';
+    document.getElementById('eight').innerText = '';
+    document.getElementById('nine').innerText = '';
+}
+</script>
+    <center>
+        <table>
+            <tr>
+                <td><button id="one"></button></td>
+                <td><button id="two"></button></td>
+                <td><button id="three"></button></td>
+            </tr>
+            <tr>
+                <td><button id="four" ></button></td>
+                <td><button id="five"></button></td>
+                <td><button id="six"></button></td>
+            </tr>
+            <tr>
+                <td><button id="seven"></button></td>
+                <td><button id="eight"></button></td>
+                <td><button id="nine"></button></td>
+            </tr>
+        </table>
+    </center>
+    </div>
+    </body>
+</html>
